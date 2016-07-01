@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by Adam on 7/1/2016. Worksheet 6
  */
@@ -7,6 +9,8 @@ public class SimpleStack implements Stack {
         s = new SimpleStack();
         for (int k = 0 ; k < 10 ; k++)
             s.push(k);
+        System.out.println(s.top());
+        System.out.println(s);
         System.out.println(s.isEmpty()); // false
         for (int k = 0 ; k < 10 ; k++)
             System.out.println(s.pop());
@@ -23,7 +27,8 @@ public class SimpleStack implements Stack {
     }
     public boolean isEmpty()
     {
-        return (myElements[0]==null);
+        //return (myElements[0]==null);
+        return (currentPlace==0);
     }
     public boolean push(Object element)
     {
@@ -38,22 +43,22 @@ public class SimpleStack implements Stack {
     public Object pop()
     {
         if (currentPlace==0){
-            if (myElements[currentPlace]==null){
-                return null;
-            } else {
-                Object result= myElements[currentPlace];
-                myElements[currentPlace]=null;
-                return result;
-            }
+        //Object result= myElements[currentPlace];
+        //myElements[currentPlace]=null;
+       // return result;
+            return null;
         }else {
             currentPlace--;
             Object result=myElements[currentPlace];
-            myElements[currentPlace]=null;
+            //myElements[currentPlace]=null;
             return result;
         }
     }
     public Object top()
     {
-        return myElements[currentPlace];
+        return myElements[currentPlace-1];
+    }
+    public String toString(){
+        return Arrays.toString(myElements);
     }
 }
